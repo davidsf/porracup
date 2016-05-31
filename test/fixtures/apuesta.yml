@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  porra_id: 1
+  match_id: 1
+  apuesta: MyString
+
+two:
+  porra_id: 1
+  match_id: 1
+  apuesta: MyString

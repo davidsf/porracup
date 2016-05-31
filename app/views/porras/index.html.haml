@@ -1,0 +1,34 @@
+%h1 Zoconet
+= link_to "Realizar una porra", :controller=>'porras', :action=>'new'
+
+- @matches.each do |partido|
+	- pronostico = partido.pronostico
+	%table.grupo
+		%tr
+			%th
+				Proximo partido
+		%tr
+			%td
+				- apuesta = current_user.porras.first.apuestas.where(:match_id => partido.id).first
+				Tu apuesta:
+				= apuesta.apuesta
+		%tr
+			%td
+				= partido.match_date.strftime ("%d/%m  %H:%M")
+			%td
+				= image_tag partido.team_one.flag
+				= partido.team_one.name
+			%td
+				= "-"
+			%td
+				= image_tag partido.team_two.flag
+				= partido.team_two.name
+		%tr
+			%td
+				Pron&oacute;stico:
+			%td.center
+				= pronostico[0]
+			%td.center
+				= pronostico[1]
+			%td.center
+				= pronostico[2]

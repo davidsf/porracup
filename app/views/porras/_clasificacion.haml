@@ -1,0 +1,12 @@
+%strong
+  Grupo #{group.name}
+%table.clasification_group
+  - @porra.porra_clasifications.where(:group_id=>group.id).order('points desc').each do |pc|
+    %tr
+      %td
+        = image_tag pc.team.flag
+      %td
+        = pc.team.name
+      %td
+        = pc.points
+

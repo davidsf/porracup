@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Eurocopa 2016</title>
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" %>
+    <%= javascript_include_tag 'rails' %>
+    <%= csrf_meta_tag %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+    <div id="container">
+      <div id="user_nav">
+        <% if user_signed_in? %>
+          Conectado como <i><%= current_user.name %></i> |
+          <%= link_to "Ver mis apuestas", porras_path %> |
+          <%= link_to "Salir", destroy_user_session_path %>
+        <% else %>
+          <%= link_to "Registrarse", new_user_registration_path %> o <%= link_to "Entrar", new_user_session_path %>
+        <% end %>
+      </div>
+
+      <%= link_to image_tag("logo.jpg", :size=>"120x120"), root_path %>
+
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
+      <%= yield %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+%center
+	%strong
+		Nueva Porra
+
+= form_for(@porra) do |form|
+	- for group in Group.order('name')
+		%table
+			%tr
+				%td
+					%table.grupo
+						%tr
+							%th
+								Grupo
+								= group.name
+						- for match in group.matches
+							%tr
+								%td
+									= match.match_date.strftime ("%d/%m  %H:%M")
+								%td
+									= image_tag match.team_one.flag
+									= match.team_one.name
+								%td
+									= image_tag match.team_two.flag
+									= match.team_two.name
+								%td
+									= select_tag "partido[#{match.id}]", options_for_select([ ["1", "1"], ["X","X"], ["2","2"] ], :selected=>"X")
+	= submit_tag 'Aceptar'

@@ -1,0 +1,45 @@
+%center
+  %strong
+    Apuesta de
+    = @porra.user.name
+
+%h4
+  %center
+    Primera fase
+- for group in Group.order('name')
+  %table
+    %tr
+      %td
+        %table.grupo
+          %tr
+            %th
+              Grupo
+              = group.name
+          - for match in group.matches
+            - apuesta = @porra.apuestas.where(:match_id => match.id).first
+            %tr
+              %td
+                = match.match_date.strftime ("%d/%m  %H:%M")
+              %td
+                = image_tag match.team_one.flag
+                = match.team_one.name
+              %td
+                = image_tag match.team_two.flag
+                = match.team_two.name
+              %td
+                = apuesta.apuesta
+              %td
+                - if not match.result.nil?
+                  - if apuesta.acierto?
+                    = image_tag "ok.gif", :size=>"18x18"
+                  - else
+                    = image_tag "cancel.png", :size=>"18x18"
+      %td
+        %table.grupo
+          %tr
+            %th
+              Clasificaci&oacute;n
+          %tr{ :id=>"clasificacion_#{group.id}"}
+            %td
+              = render :partial => "clasificacion", :locals => { :group=>group}
+
