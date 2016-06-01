@@ -2,7 +2,7 @@
 	%strong
 		Nueva Porra
 
-= form_for(@porra) do |form|
+= form_for(@porra, method: 'post') do |form|
 	- for group in Group.order('name')
 		%table
 			%tr

@@ -11,6 +11,7 @@ class PorrasController < ApplicationController
   end
 
   def show
+		@porra = Porra.find(params[:id])
   end
 
   def create
@@ -24,9 +25,16 @@ class PorrasController < ApplicationController
       @apuesta.save
     end
 		flash[:notice] = 'Apuesta realizada'
-    redirect_to porras_path
+    redirect_to porra_path(@porra)
   end
 
   def get_clasification
   end
+
+	def destroy
+		porra = current_user.porras.find(params[:id])
+		porra.destroy
+		flash[:notice] = 'Porra borrada'
+		redirect_to porras_path
+	end
 end

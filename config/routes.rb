@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-	resource 'porras'
+	resources 'porras'
   get 'porras/get_clasification'
 
   devise_for :users

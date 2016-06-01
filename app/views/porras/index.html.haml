@@ -1,5 +1,11 @@
-%h1 Zoconet
-= link_to "Realizar una porra", :controller=>'porras', :action=>'new'
+%h1.center Zoconet
+- if current_user.porras.size==0
+	= link_to "Realizar una porra", new_porra_path
+- else
+	- for porra in current_user.porras
+		%br
+		= link_to "Ver porra", porra_path(porra)
+		= link_to "Borrar", porra, method: :delete
 
 - @matches.each do |partido|
 	- pronostico = partido.pronostico
