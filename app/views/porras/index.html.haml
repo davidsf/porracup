@@ -5,8 +5,7 @@
 	- for porra in current_user.porras
 		%br
 		= link_to "Ver porra", porra_path(porra)
-		= link_to "Borrar", porra, method: :delete
-
+		
 - @matches.each do |partido|
 	- pronostico = partido.pronostico
 	%table.grupo
