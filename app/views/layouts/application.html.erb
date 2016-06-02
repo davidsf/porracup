@@ -3,8 +3,7 @@
   <head>
     <title>Eurocopa 2016</title>
     <%= stylesheet_link_tag "application" %>
-    <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" %>
-    <%= javascript_include_tag 'rails' %>
+    <%= javascript_include_tag :application %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
   </head>
@@ -18,7 +17,7 @@
 					<% else %>
 						<%= link_to "Realizar una porra", new_porra_path %> |
 					<% end %>
-					<%= link_to "Salir", destroy_user_session_path %>
+					<%= link_to "Salir", destroy_user_session_path, method: 'delete' %>
         <% else %>
           <%= link_to "Registrarse", new_user_registration_path %> o <%= link_to "Entrar", new_user_session_path %>
         <% end %>
