@@ -4,11 +4,11 @@ class Match < ActiveRecord::Base
 	has_many :apuestas
 
 	scope :done, -> { where("result is not NULL") }
-	scope :today, -> { where(['match_date like ?', DateTime.now.strftime("%Y-%m-%d")+'%']).order(:match_date) }
+	scope :today, -> { where(['match_date::text like ?', DateTime.now.strftime("%Y-%m-%d")+'%']).order(:match_date) }
 
 	def self.next
 		date = DateTime.now
-		find(:first, :conditions=>["match_date>?", date], :order => "match_date")
+		self.where("match_date>?", date).order("match_date").first
 	end
 
 	def pronostico
