@@ -27,6 +27,6 @@
 	- @clasification.each do |porra|
 		%tr
 			%td
-				= porra.user.name
+				= link_to porra.user.name, porra_path(porra)
 			%td
 				= porra.points
