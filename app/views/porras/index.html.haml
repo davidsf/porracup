@@ -5,7 +5,7 @@
 	- for porra in current_user.porras
 		%br
 		= link_to "Ver porra", porra_path(porra)
-		
+
 - @matches.each do |partido|
 	- pronostico = partido.pronostico
 	%table.grupo
@@ -14,9 +14,10 @@
 				Proximo partido
 		%tr
 			%td
-				- apuesta = current_user.porras.first.apuestas.where(:match_id => partido.id).first
-				Tu apuesta:
-				= apuesta.apuesta
+				- if not current_user.porras.first.nil?
+					- apuesta = current_user.porras.first.apuestas.where(:match_id => partido.id).first
+					Tu apuesta:
+					= apuesta.apuesta
 		%tr
 			%td
 				= partido.match_date.strftime ("%d/%m  %H:%M")
