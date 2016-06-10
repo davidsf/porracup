@@ -1,0 +1,27 @@
+- pronostico = match.pronostico
+%tr
+	%td
+		- if not current_user.porras.first.nil?
+			- apuesta = current_user.porras.first.apuestas.where(:match_id => match.id).first
+			Tu apuesta:
+			= apuesta.apuesta
+%tr
+	%td
+		= match.match_date.strftime ("%d/%m  %H:%M")
+	%td
+		= image_tag match.team_one.flag
+		= match.team_one.name
+	%td
+		= "-"
+	%td
+		= image_tag match.team_two.flag
+		= match.team_two.name
+%tr
+	%td
+		Pron&oacute;stico:
+	%td.center
+		= pronostico[0]
+	%td.center
+		= pronostico[1]
+	%td.center
+		= pronostico[2]

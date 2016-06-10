@@ -3,6 +3,8 @@ class PorrasController < ApplicationController
 
   def index
 		@matches = Match.today
+		@tomorrow = Match.tomorrow
+		@clasification = Porra.all.order('points desc')
   end
 
   def new

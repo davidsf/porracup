@@ -5,6 +5,7 @@ class Match < ActiveRecord::Base
 
 	scope :done, -> { where("result is not NULL") }
 	scope :today, -> { where(['match_date::text like ?', DateTime.now.strftime("%Y-%m-%d")+'%']).order(:match_date) }
+	scope :tomorrow, -> { where(['match_date::text like ?', (DateTime.now+1.day).strftime("%Y-%m-%d")+'%'])}
 
 	def self.next
 		date = DateTime.now

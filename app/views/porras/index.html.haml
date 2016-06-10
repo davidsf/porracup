@@ -6,35 +6,27 @@
 		%br
 		= link_to "Ver porra", porra_path(porra)
 
-- @matches.each do |partido|
-	- pronostico = partido.pronostico
-	%table.grupo
-		%tr
-			%th
-				Proximo partido
-		%tr
-			%td
-				- if not current_user.porras.first.nil?
-					- apuesta = current_user.porras.first.apuestas.where(:match_id => partido.id).first
-					Tu apuesta:
-					= apuesta.apuesta
-		%tr
-			%td
-				= partido.match_date.strftime ("%d/%m  %H:%M")
-			%td
-				= image_tag partido.team_one.flag
-				= partido.team_one.name
-			%td
-				= "-"
-			%td
-				= image_tag partido.team_two.flag
-				= partido.team_two.name
+%table.grupo
+	%tr
+		%th
+			Partido hoy
+	- @matches.each do |match|
+		= render partial: 'match', locals: {match: match}
+
+%table.grupo
+	%tr
+		%th
+			Partidos mañana
+	- @tomorrow.each do |match|
+		= render partial: 'match', locals: {match: match}
+
+%table.grupo
+	%tr
+		%th
+			Clasificación
+	- @clasification.each do |porra|
 		%tr
 			%td
-				Pron&oacute;stico:
-			%td.center
-				= pronostico[0]
-			%td.center
-				= pronostico[1]
-			%td.center
-				= pronostico[2]
+				= porra.user.name
+			%td
+				= porra.points
