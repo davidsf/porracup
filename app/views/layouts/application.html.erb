@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Eurocopa 2016</title>
+    <title>Mundial 2018</title>
     <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag :application %>
     <%= csrf_meta_tag %>
@@ -23,7 +23,7 @@
         <% end %>
       </div>
 
-      <%= link_to image_tag("logo.jpg", :size=>"120x120"), root_path %>
+      <%= link_to image_tag("logo-mundial18.jpg", :size=>"120x120"), root_path %>
 
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
