@@ -46,11 +46,10 @@ group :development do
 end
 
 group :production do
-   gem 'pg'
+   gem 'pg', '~> 0.20'
 end
 
 
 gem 'devise'
 gem 'haml-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
-gem 'pg'
