@@ -12,5 +12,6 @@ class CreateGroups < ActiveRecord::Migration
 		Group.create(:name=>'E')
 		Group.create(:name=>'F')
 		Group.create(:name=>'G')
+		Group.create(:name=>'H')
   end
 end
